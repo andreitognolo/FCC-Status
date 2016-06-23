@@ -36,9 +36,10 @@ define([], function () {
                         }
                     },
                     error: function (xhr, textStatus, errorThrown) {
+                        console.error("AJAX error in request: " + JSON.stringify(xhr, null, 2));
                         console.error("There was an error fetching the points:");
-                        console.error("statusCode", xhr.status);
-                        console.error("textStatus: ", textStatus);
+                        console.error("responseText", xhr.responseText);
+                        console.error("errorThrown: ", errorThrown);
                         
                         points = 0;
                     }
