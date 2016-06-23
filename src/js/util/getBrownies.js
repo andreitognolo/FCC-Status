@@ -12,7 +12,7 @@ define([], function () {
 
 
     return {
-        getPoints: function (uname) {
+        getPoints: function (uname, cb) {
 
 
             if (uname.length !== 0) {
@@ -26,29 +26,25 @@ define([], function () {
                     type: 'GET',
                     url: url,
                     //data:data,
-                    async: false,
                     dataType: 'json',
                     success: function (data) {
                         //Do stuff with the JSON data
                         if (typeof (data) !== 'undefined') {
                             points = data.about.browniePoints;
-                            // points = 310;
+                            cb(points);
                         }
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("AJAX error in request: " + JSON.stringify(xhr, null, 2));
-                        console.error("There was an error fetching the points:");
                         console.error("responseText", xhr.responseText);
                         console.error("errorThrown: ", errorThrown);
-                        
-                        points = 0;
+
+                        cb(0);
                     }
                 });
 
-                return points;
-
             } else {
-                return 0;
+                return cb(0);
             }
 
         }
