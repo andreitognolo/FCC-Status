@@ -37,8 +37,8 @@ define([], function () {
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("There was an error fetching the points:");
-                        console.error("statusCode", xhr.statusCode());
-                        console.error("textStatus: ", textSTatus);
+                        console.error("statusCode", xhr.status);
+                        console.error("textStatus: ", textStatus);
                         
                         points = 0;
                     }
