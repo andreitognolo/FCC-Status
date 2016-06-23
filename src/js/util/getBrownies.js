@@ -35,7 +35,11 @@ define([], function () {
                             // points = 310;
                         }
                     },
-                    error: function ( /* xhr, textStatus, errorThrown */ ) {
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error("There was an error fetching the points:");
+                        console.error("statusCode", xhr.statusCode());
+                        console.error("textStatus: ", textSTatus);
+                        
                         points = 0;
                     }
                 });
